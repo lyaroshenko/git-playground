@@ -10,6 +10,9 @@ def is_game_over():
     return guessed == WORDS_TO_WIN or errors == ERRORS_TO_LOSE
 
 
+def game_over_message():
+    print("Game over :( You've run out of lives!")
+
 guessed = 0
 errors = 0
 
@@ -40,4 +43,7 @@ while not is_game_over():
         print(f"That's right! {WORDS_TO_WIN - guessed} to go")
     else:
         errors += 1
+        if errors == ERRORS_TO_LOSE:
+            game_over_message()
+            exit()
         print(f"Oops :( No such word, you have {ERRORS_TO_LOSE - errors} lives more")
