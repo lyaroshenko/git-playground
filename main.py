@@ -22,12 +22,15 @@ words = words_fetcher.fetch_words(min_letters=9, max_letters=9)
 full_list = words_fetcher.fetch_words(min_letters=3, max_letters=9)
 word = words[random.randrange(0, len(words))]
 
-print(f"Cae up {WORDS_TO_WIN} words from letters in word provided by me?")
-print(f"Your word is '{word}'hbbhecbeecf")
+print(f"Can you guess up {WORDS_TO_WIN} words from letters in word provided by me?")
+print(f"Your word is '{word}'")
 
 
 while not is_game_over():
     guess = input("Your next take: ")
+    if guess in guesses:
+        print("You've already guessed that word. Try something new!")
+        continue
     if guess in full_list:
         guessed += 1
         guesses.append(guess)
